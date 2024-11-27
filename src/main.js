@@ -164,6 +164,25 @@ scene.add(jupiter);
 jupiter.position.x = 35;
 jupiter.position.z = -50;
 
+//saturn
+const saturnTexture = new THREE.TextureLoader().load("saturn.png");
+const saturn = new THREE.Mesh(
+  new THREE.SphereGeometry(8, 32, 32),
+  new THREE.MeshStandardMaterial({ map: saturnTexture })
+);
+scene.add(saturn);
+saturn.position.x = -65;
+
+//uranus
+const uranusGeometry = new THREE.SphereGeometry(6, 32, 32);
+const uranusMaterial = new THREE.MeshStandardMaterial({
+  color: 0x73c2fb,
+});
+const uranus = new THREE.Mesh(uranusGeometry, uranusMaterial);
+scene.add(uranus);
+uranus.position.x = 70;
+uranus.position.z = -20;
+
 lexie.position.z = -5;
 lexie.position.x = 2;
 
