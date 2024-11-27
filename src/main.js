@@ -26,32 +26,32 @@ renderer.setPixelRatio(window.devicePixelRatio);
 //make it a full screen canvas
 renderer.setSize(window.innerWidth, window.innerHeight);
 //move camera back
-camera.position.setZ(30);
+camera.position.setZ(50);
 // render = draw
 renderer.render(scene, camera);
 
-//1. we need a geometry with {x, y, z} points that makeup a shape
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-//2. material to color the geometry, like the wrapping papar for an object
-const material = new THREE.MeshStandardMaterial({
-  color: 0x4f86f7,
-});
-// 3. mesh, combine geometry and material
-const torus = new THREE.Mesh(geometry, material);
-//add mesh to scene
-scene.add(torus);
+// 1. we need a geometry with {x, y, z} points that makeup a shape
+// const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+// //2. material to color the geometry, like the wrapping papar for an object
+// const material = new THREE.MeshStandardMaterial({
+//   color: 0x4f86f7,
+// });
+// // 3. mesh, combine geometry and material
+// const torus = new THREE.Mesh(geometry, material);
+// //add mesh to scene
+// scene.add(torus);
 
 //4. add a light source
 //light everything equally
 const pointLight = new THREE.PointLight(0xffffff, 100);
-pointLight.position.set(0, 5, 5);
+pointLight.position.set(0, 10, 10);
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
 //add a helper to see the light source
-// const lightHelper = new THREE.PointLightHelper(pointLight);
-// scene.add(lightHelper);
+const lightHelper = new THREE.PointLightHelper(pointLight);
+scene.add(lightHelper);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 //generate stars
@@ -72,10 +72,6 @@ function addStar() {
 }
 Array(200).fill().forEach(addStar);
 
-// space
-// const spaceTexture = new THREE.TextureLoader().load("galaxy2.jpg");
-// scene.background = spaceTexture;
-
 //avatar
 const lexieTexture = new THREE.TextureLoader().load("lexie2.jpg", () => {
   lexieTexture.minFilter = THREE.LinearFilter;
@@ -87,6 +83,27 @@ const lexie = new THREE.Mesh(
   new THREE.MeshBasicMaterial({ map: lexieTexture })
 );
 scene.add(lexie);
+
+//sun
+const sunTexture = new THREE.TextureLoader().load("sun.png");
+const sun = new THREE.Mesh(
+  new THREE.SphereGeometry(10, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: sunTexture,
+    emissive: 0xff4500,
+    emissiveIntensity: 1,
+  })
+);
+scene.add(sun);
+
+//Mercury
+const mercuryTexture = new THREE.TextureLoader().load("mercury1.jpg");
+const mercury = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({ map: mercuryTexture })
+);
+scene.add(mercury);
+mercury.position.x = -15;
 
 //moon
 const moonTexture = new THREE.TextureLoader().load("moon.jpg", () => {
@@ -141,9 +158,9 @@ lexie.position.x = 2;
 //but we use a loop to keep rendering
 function animate() {
   requestAnimationFrame(animate);
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.01;
+  // torus.rotation.x += 0.01;
+  // torus.rotation.y += 0.005;
+  // torus.rotation.z += 0.01;
   controls.update();
   renderer.render(scene, camera);
 }
