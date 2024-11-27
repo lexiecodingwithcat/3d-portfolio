@@ -183,6 +183,16 @@ scene.add(uranus);
 uranus.position.x = 70;
 uranus.position.z = -20;
 
+//neptune
+const neptuneTexture = new THREE.TextureLoader().load("neptune.png");
+const neptune = new THREE.Mesh(
+  new THREE.SphereGeometry(5, 32, 32),
+  new THREE.MeshStandardMaterial({ map: neptuneTexture })
+);
+scene.add(neptune);
+neptune.position.x = -70;
+neptune.position.z = -30;
+
 lexie.position.z = -5;
 lexie.position.x = 2;
 
