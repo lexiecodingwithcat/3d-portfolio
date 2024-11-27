@@ -26,7 +26,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 //make it a full screen canvas
 renderer.setSize(window.innerWidth, window.innerHeight);
 //move camera back
-camera.position.setZ(60);
+camera.position.setZ(70);
 // render = draw
 renderer.render(scene, camera);
 
@@ -83,6 +83,9 @@ const lexie = new THREE.Mesh(
   new THREE.MeshBasicMaterial({ map: lexieTexture })
 );
 scene.add(lexie);
+lexie.position.z = 50;
+lexie.position.x = 2;
+lexie.position.y = -10;
 
 //sun
 const sunTexture = new THREE.TextureLoader().load("sun3.png");
@@ -193,9 +196,6 @@ const neptune = new THREE.Mesh(
 scene.add(neptune);
 neptune.position.x = -70;
 neptune.position.z = -10;
-
-lexie.position.z = -5;
-lexie.position.x = 2;
 
 // function moveCamera() {
 //   //where the user is currently scroll too
