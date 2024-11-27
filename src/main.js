@@ -26,7 +26,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 //make it a full screen canvas
 renderer.setSize(window.innerWidth, window.innerHeight);
 //move camera back
-camera.position.setZ(50);
+camera.position.setZ(60);
 // render = draw
 renderer.render(scene, camera);
 
@@ -85,9 +85,9 @@ const lexie = new THREE.Mesh(
 scene.add(lexie);
 
 //sun
-const sunTexture = new THREE.TextureLoader().load("sun.png");
+const sunTexture = new THREE.TextureLoader().load("sun3.png");
 const sun = new THREE.Mesh(
-  new THREE.SphereGeometry(10, 32, 32),
+  new THREE.SphereGeometry(15, 32, 32),
   new THREE.MeshStandardMaterial({
     map: sunTexture,
     emissive: 0xff4500,
@@ -103,7 +103,7 @@ const mercury = new THREE.Mesh(
   new THREE.MeshStandardMaterial({ map: mercuryTexture })
 );
 scene.add(mercury);
-mercury.position.x = -15;
+mercury.position.x = -20;
 
 // Venus
 const venusTexture = new THREE.TextureLoader().load("venus.png");
@@ -112,7 +112,7 @@ const venus = new THREE.Mesh(
   new THREE.MeshStandardMaterial({ map: venusTexture })
 );
 scene.add(venus);
-venus.position.x = 20;
+venus.position.x = 25;
 venus.position.z = -10;
 
 //moon
@@ -123,26 +123,36 @@ const moonTexture = new THREE.TextureLoader().load("moon.jpg", () => {
 });
 const moonNormalTexture = new THREE.TextureLoader().load("normal.jpg");
 const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.SphereGeometry(2, 32, 32),
   new THREE.MeshStandardMaterial({
     map: moonTexture,
     normalMap: moonNormalTexture,
   })
 );
 scene.add(moon);
+moon.position.z = 20;
+moon.position.x = -32;
+moon.position.y = 5;
 
 //earth
 const earthTexture = new THREE.TextureLoader().load("earth.png");
 const earth = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.SphereGeometry(6, 32, 32),
   new THREE.MeshStandardMaterial({ map: earthTexture })
 );
 scene.add(earth);
-
 earth.position.x = -25;
 earth.position.z = 15;
-moon.position.z = 30;
-moon.position.x = -10;
+
+//jupiter
+const jupiterTexture = new THREE.TextureLoader().load("jupiter.png");
+const jupiter = new THREE.Mesh(
+  new THREE.SphereGeometry(10, 32, 32),
+  new THREE.MeshStandardMaterial({ map: jupiterTexture })
+);
+scene.add(jupiter);
+jupiter.position.x = 35;
+jupiter.position.z = -50;
 
 lexie.position.z = -5;
 lexie.position.x = 2;
