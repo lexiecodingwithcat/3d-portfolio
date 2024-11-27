@@ -73,11 +73,7 @@ function addStar() {
 Array(200).fill().forEach(addStar);
 
 // space
-// const spaceTexture = new THREE.TextureLoader().load("space5.jpg", () => {
-//   spaceTexture.minFilter = THREE.LinearFilter;
-//   spaceTexture.magFilter = THREE.LinearFilter;
-//   animate();
-// });
+// const spaceTexture = new THREE.TextureLoader().load("galaxy2.jpg");
 // scene.background = spaceTexture;
 
 //avatar
@@ -101,10 +97,45 @@ const moonTexture = new THREE.TextureLoader().load("moon.jpg", () => {
 const moonNormalTexture = new THREE.TextureLoader().load("normal.jpg");
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshBasicMaterial({ map: moonTexture })
+  new THREE.MeshStandardMaterial({
+    map: moonTexture,
+    normalMap: moonNormalTexture,
+  })
 );
-moon.position.set(10, 10, 10);
 scene.add(moon);
+
+//earth
+const earthTexture = new THREE.TextureLoader().load("earth.png");
+const earth = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({ map: earthTexture })
+);
+scene.add(earth);
+
+earth.position.x = 20;
+earth.position.y = 10;
+moon.position.z = 30;
+moon.position.x = -10;
+
+lexie.position.z = -5;
+lexie.position.x = 2;
+
+// function moveCamera() {
+//   //where the user is currently scroll too
+//   const t = document.body.getBoundingClientRect().top;
+//   moon.rotation.x += 0.05;
+//   moon.rotation.y += 0.075;
+//   moon.rotation.z += 0.05;
+
+//   lexie.rotation.y += 0.01;
+//   lexie.rotation.z += 0.01;
+
+//   camera.position.z = t * -0.01;
+//   camera.position.x = t * -0.0002;
+//   camera.rotation.y = t * -0.0002;
+// }
+
+// document.body.onscroll = moveCamera;
 
 //render the scene
 //but we use a loop to keep rendering
