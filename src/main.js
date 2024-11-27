@@ -1,6 +1,7 @@
 import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
 //scene == container
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
@@ -43,8 +44,8 @@ renderer.render(scene, camera);
 
 //4. add a light source
 //light everything equally
-const pointLight = new THREE.PointLight(0xffffff, 100);
-pointLight.position.set(0, 10, 10);
+const pointLight = new THREE.PointLight(0xff4500, 100);
+pointLight.position.set(0, 0, 0);
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
@@ -197,30 +198,22 @@ scene.add(neptune);
 neptune.position.x = -70;
 neptune.position.z = -10;
 
-// function moveCamera() {
-//   //where the user is currently scroll too
-//   const t = document.body.getBoundingClientRect().top;
-//   moon.rotation.x += 0.05;
-//   moon.rotation.y += 0.075;
-//   moon.rotation.z += 0.05;
+function moveCamera() {
+  //where the user is currently scroll too
+  const t = document.body.getBoundingClientRect().top;
 
-//   lexie.rotation.y += 0.01;
-//   lexie.rotation.z += 0.01;
+  camera.position.z = t * -0.01;
+  camera.position.x = t * -0.0002;
+  camera.rotation.y = t * -0.0002;
+}
 
-//   camera.position.z = t * -0.01;
-//   camera.position.x = t * -0.0002;
-//   camera.rotation.y = t * -0.0002;
-// }
-
-// document.body.onscroll = moveCamera;
+document.body.onscroll = moveCamera;
 
 //render the scene
 //but we use a loop to keep rendering
 function animate() {
   requestAnimationFrame(animate);
-  // torus.rotation.x += 0.01;
-  // torus.rotation.y += 0.005;
-  // torus.rotation.z += 0.01;
+
   controls.update();
   renderer.render(scene, camera);
 }
