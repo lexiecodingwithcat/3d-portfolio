@@ -105,6 +105,16 @@ const mercury = new THREE.Mesh(
 scene.add(mercury);
 mercury.position.x = -15;
 
+// Venus
+const venusTexture = new THREE.TextureLoader().load("venus.png");
+const venus = new THREE.Mesh(
+  new THREE.SphereGeometry(5, 32, 32),
+  new THREE.MeshStandardMaterial({ map: venusTexture })
+);
+scene.add(venus);
+venus.position.x = 20;
+venus.position.z = -10;
+
 //moon
 const moonTexture = new THREE.TextureLoader().load("moon.jpg", () => {
   moonTexture.minFilter = THREE.LinearFilter;
@@ -129,8 +139,8 @@ const earth = new THREE.Mesh(
 );
 scene.add(earth);
 
-earth.position.x = 20;
-earth.position.y = 10;
+earth.position.x = -25;
+earth.position.z = 15;
 moon.position.z = 30;
 moon.position.x = -10;
 
