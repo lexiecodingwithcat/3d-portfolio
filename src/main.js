@@ -144,6 +144,16 @@ scene.add(earth);
 earth.position.x = -25;
 earth.position.z = 15;
 
+//mars
+const marsTexture = new THREE.TextureLoader().load("mars.png");
+const mars = new THREE.Mesh(
+  new THREE.SphereGeometry(4, 32, 32),
+  new THREE.MeshStandardMaterial({ map: marsTexture })
+);
+scene.add(mars);
+mars.position.x = 40;
+mars.position.z = 20;
+
 //jupiter
 const jupiterTexture = new THREE.TextureLoader().load("jupiter.png");
 const jupiter = new THREE.Mesh(
