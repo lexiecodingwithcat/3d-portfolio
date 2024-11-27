@@ -113,7 +113,7 @@ const venus = new THREE.Mesh(
 );
 scene.add(venus);
 venus.position.x = 25;
-venus.position.z = -10;
+venus.position.z = 30;
 
 //moon
 const moonTexture = new THREE.TextureLoader().load("moon.jpg", () => {
@@ -171,17 +171,18 @@ const saturn = new THREE.Mesh(
   new THREE.MeshStandardMaterial({ map: saturnTexture })
 );
 scene.add(saturn);
-saturn.position.x = -65;
+saturn.position.x = -50;
+saturn.position.z = -50;
 
 //uranus
-const uranusGeometry = new THREE.SphereGeometry(6, 32, 32);
-const uranusMaterial = new THREE.MeshStandardMaterial({
-  color: 0x73c2fb,
-});
-const uranus = new THREE.Mesh(uranusGeometry, uranusMaterial);
+const uranusTexture = new THREE.TextureLoader().load("uranus.png");
+const uranus = new THREE.Mesh(
+  new THREE.SphereGeometry(7, 32, 32),
+  new THREE.MeshStandardMaterial({ map: uranusTexture })
+);
+uranus.position.x = -80;
+uranus.position.z = -30;
 scene.add(uranus);
-uranus.position.x = 70;
-uranus.position.z = -20;
 
 //neptune
 const neptuneTexture = new THREE.TextureLoader().load("neptune.png");
@@ -191,7 +192,7 @@ const neptune = new THREE.Mesh(
 );
 scene.add(neptune);
 neptune.position.x = -70;
-neptune.position.z = -30;
+neptune.position.z = -10;
 
 lexie.position.z = -5;
 lexie.position.x = 2;
